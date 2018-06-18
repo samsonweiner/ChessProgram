@@ -23,7 +23,7 @@ class Bishop:
                         self.pos = new_pos
                         return True
                     #if spot is taken by opposing colored piece
-                    elif board[new_pos[0]][new_pos[1]] != [] and board[new_pos[0]][new_pos[1]].color != self.color:
+                    elif board[new_pos[0]][new_pos[1]] != [] and board[new_pos[0]][new_pos[1]].col != self.col:
                         print("Bishop from", self.pos, "takes", board[new_pos[0]][new_pos[1]].id, "on", new_pos)
                         board[self.pos[0]][self.pos[1]] = []
                         board[new_pos[0]][new_pos[1]] = self
