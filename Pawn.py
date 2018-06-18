@@ -35,7 +35,8 @@ class Pawn:
                     self.error(new_pos)
             else:
                 self.error(new_pos)
-        
+        else:
+		self.error(new_pos)
         #if pawn reaches 8th rank
     
     
