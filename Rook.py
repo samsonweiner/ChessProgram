@@ -11,7 +11,7 @@ class Rook:
         # new positions are in a valid 8x8 board
         if new_pos[0] < 8 and new_pos[1] < 8:
             # if  new pos is
-            if new_pos[0] == new_pos[0] or new_pos[1] == new_pos[1]:
+            if self.pos[0] == new_pos[0] or self.pos[1] == new_pos[1]:
                 # make sure no pieces in line of sight
                 if self.piece_inbetween(new_pos):
                     # if spot is empty:
@@ -42,30 +42,28 @@ class Rook:
     def piece_inbetween(self, new_pos):
         count = abs(self.pos[0] - new_pos[0]) - 1
         # checking direction
-        if self.pos[0] < new_pos[0] and self.pos[1] < new_pos[1]:
-            # up and to the right
+        #Moving Right
+        if self.pos[0] < new_pos[0]:
             for i in range(count):
-                if board[self.pos[0] + (i + 1)][self.pos[1] + (i + 1)] != []:
+                if board[self.pos[0] + (i + 1)][self.pos[1]] != []:
                     return False
                 return True
-        elif self.pos[0] < new_pos[0] and self.pos[1] > new_pos[1]:
-            # down and to the right
+        #Moving Left
+        elif self.pos[0] > new_pos[0]:
             for i in range(count):
-                if board[self.pos[0] + (i + 1)][self.pos[1] - (i + 1)] != []:
+                if board[self.pos[0] - (i + 1)][self.pos[1]] != []:
                     return False
                 return True
-
-        elif self.pos[0] > new_pos[0] and self.pos[1] < new_pos[1]:
-            # up and to the left
+        #Moving Up
+        elif self.pos[1] < new_pos[1]:
             for i in range(count):
-                if board[self.pos[0] - (i + 1)][self.pos[1] + (i + 1)] != []:
+                if board[self.pos[1] + (i + 1)][self.pos[0]] != []:
                     return False
                 return True
-
-        elif self.pos[0] > new_pos[0] and self.pos[1] > new_pos[1]:
-            # down and to the right
+        #Moving Down
+        elif self.pos[1] > new_pos[1]:
             for i in range(count):
-                if board[self.pos[0] - (i + 1)][self.pos[1] - (i + 1)] != []:
+                if board[self.pos[1] - (i + 1)][self.pos[0]] != []:
                     return False
                 return True
         else:
